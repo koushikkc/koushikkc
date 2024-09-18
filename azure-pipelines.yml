@@ -13,6 +13,10 @@ steps:
     echo "Building the HTML file..."
     mkdir output
     cp index.html output/
+    cd output
+    cat index.html
+    cd ..
+    echo "its successful"
   displayName: 'Copy HTML File'
 
 - task: PublishBuildArtifacts@1
