@@ -1,234 +1,603 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Koushik_Resume</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K C Koushik | DevOps Engineer</title>
   <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
     }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
       padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
     }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 50%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
+
+    a {
+      color: inherit;
       text-decoration: none;
     }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
+
+    img {
+      max-width: 100%;
+      display: block;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+    .page {
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.7);
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+    }
+
+    .profile-photo-wrapper {
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      padding: 4px;
+      background: conic-gradient(from 180deg, #38bdf8, #0ea5e9, #22c55e, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 3px solid #020617;
+      background: #020617;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .headline {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .name {
+      font-size: clamp(1.8rem, 2.2vw + 1rem, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .role {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      background-color: rgba(15, 23, 42, 0.7);
+    }
+
+    .contact {
+      min-width: 220px;
+      display: grid;
+      gap: 6px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--text);
+    }
+
+    .contact strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    main {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.3fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        position: static;
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      header {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .profile-photo-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    section {
+      margin-bottom: 20px;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    .objective {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      color: #e0f2fe;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .experience-item {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.7);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+    }
+
+    .exp-company {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .exp-dates {
+      font-size: 0.8rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .exp-location {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .exp-points {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .exp-points li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 4px;
+    }
+
+    .exp-points li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    .two-col-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 6px 18px;
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .two-col-list li {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .two-col-list li::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0.55em;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .education-item {
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+
+    .education-item strong {
+      display: block;
+    }
+
+    .education-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background-color: #0b1120;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text);
+    }
+
+    .project {
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.6);
+      font-size: 0.88rem;
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project-title {
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+    }
   </style>
 </head>
+
 <body>
-<blockquote>
-<h1>Koushik Kc</h1>
-<h1>Profile</h1>
-<h2>I am a software engineer with 3+ years of experience in the field of
-cloud devops.</h2>
-<h3>Contact Details:</h3>
-<p>email : kckoushik96@gmail.com</p>
-<p>Mobile : 7036080535</p>
-</blockquote>
-<h1 id="employment-history">Employment History</h1>
-<h1 id="section"></h1>
-<h1 id="devops-engineer-sap-labs-bengaluruaug-2022-present">Devops
-Engineer, SAP LABS, Bengaluru(Aug 2022-Present)</h1>
-<ol type="1">
-<li><p>Implimented Customized Javascripts for SAP Robotic Process Automation for Bank API'S</p></li>
-<li><p>Implemented system setup using aws and kubernetes in
-argoCD</p></li>
-<li><p>Performed system copy from one tenant to another tenant using aws
-&gt; and kubernetes</p></li>
-<li><p>Used jenkins , argoCD, azure devops pipelines for Continuous &gt;
-deployment of hotfixes</p></li>
-<li><p>Performed Data-center setup on SAP BTP platform for various
-regions</p></li>
-<li><p>Enhanced Python scripts and created SPC tickets using api
-token</p></li>
-<li><p>Performed GitHub migration using HTML,JS and Devops
-tools</p></li>
-</ol>
-<h1>Graduate engineer,HCL Technologies,Chennai(Feb 2021 to May
-2022)</h1>
-<ol type="1">
-<li><p>Developed Terraform scripts and ARM templates to automate the
-&gt; provisioning and deployment process.</p></li>
-<li><p>Developed and Designed Azure DevOps pipelines to manage the &gt;
-resources across multiple subscriptions</p></li>
-<li><p>Automated various infrastructure activities like Continous Deployment, &gt;
-Environment Configuration Files, Users, Mount Points, and Packages &gt;
-using Ansible playbook</p></li>
-<li><p>Experience with Azure Cloud Services (PaaS &amp; laaS), Azure
-Virtual &gt; Machines, Azure Storage, SQL, Azure AAD and Azure Data
-Factory</p></li>
-</ol>
-<h1>Consultant,Criterion Networks,Bengaluru</h1>
-<p>MAV 2019 — JULY 2020</p>
-<p>Developed Selenium python scripts to test and automate the Criterion
-networks web platform Performed enhancements in the criterion web
-platform using Django Framework</p>
-<h1 id="intern-criterion-networks-bengaluru">Intern, Criterion Networks,
-Bengaluru</h1>
-<p>JULY 2019 — APRIL 2020</p>
-<ol type="1">
-<li><p>Developed test cases using Jira for bug fixes and
-enhancements</p></li>
-<li><p>Developed shell scripts and Python scripts for network automation
-to &gt; ensure connectivity between various networking devices.</p></li>
-</ol>
-<h1 id="education">Education</h1>
-<p>Mtech in Embedded Systems, Vellore Institute of Technology,
-Vellore</p>
-<p>BTECH in Electronics and Communication, KSRM College of
-engineering</p>
+  <div class="page">
+    <header>
+      <div class="profile-photo-wrapper">
+        <div class="profile-photo">
+          <!-- Replace the src with the correct path when deploying -->
+          <img src="1.JPG" alt="K C Koushik" />
+        </div>
+      </div>
+
+      <div class="headline">
+        <div class="name">K C Koushik</div>
+        <div class="role">DevOps Engineer & Automation Specialist</div>
+        <div class="tags">
+          <span class="tag">SAP Labs – DevOps</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">AWS & Azure</span>
+          <span class="tag">CI/CD – Jenkins & Azure DevOps</span>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div><strong>Email:</strong> <a href="mailto:kckoushik96@gmail.com">kckoushik96@gmail.com</a></div>
+        <div><strong>Phone:</strong> <a href="tel:+917036080535">+91 70360 80535</a></div>
+        <div><strong>LinkedIn:</strong> <a href="#">Koushik KC</a></div>
+        <div><strong>Location:</strong> Bengaluru, India</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div>
+        <section>
+          <div class="section-title"><span>Overview</span> / Career Objective</div>
+          <p class="objective">
+            DevOps Engineer with hands-on experience in automation, cloud infrastructure, and CI/CD. Proven track record in
+            improving system reliability, securing cloud workloads, and streamlining deployment pipelines across SAP and Azure
+            ecosystems. Looking to contribute to a high-impact engineering team where I can design scalable DevOps solutions
+            end-to-end.
+          </p>
+          <div class="pill-row">
+            <span class="pill">DevOps & SRE</span>
+            <span class="pill">Cloud Migration</span>
+            <span class="pill">Automation</span>
+            <span class="pill">Security & Compliance</span>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Experience</span> / Professional Journey</div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">DevOps Engineer</div>
+                <div class="exp-company">SAP Labs, Bengaluru</div>
+              </div>
+              <div class="exp-dates">Aug 2022 – Present</div>
+            </div>
+            <div class="exp-location">SAP RPA · Cloud Foundry · AWS · Kubernetes · CI/CD</div>
+            <ul class="exp-points">
+              <li>Led SAP Robotic Process Automation (RPA) initiatives to migrate workloads from Neo to Cloud Foundry using
+                Node. js-based automation.</li>
+              <li>Implemented SSL certificate lifecycle management with Python-based monitoring and automated ticket creation in
+                SPC via iFlows from MBC tenants.</li>
+              <li>Migrated encryption keys for AWS RDS production systems and used AWS Lambda to automate recurring operational tasks
+                workflows.</li>
+              <li>Performed Kubernetes operations, including system copy from test to production and pod monitoring across
+                namespaces to ensure cluster health.</li>
+              <li>Migrated internal documentation to GitHub Pages using Pandoc, improving collaboration and version control.</li>
+              <li>Built and managed CI/CD pipelines using Jenkins and Azure DevOps to streamline deployments across test and
+                production landscapes.</li>
+              <li>Resolved security vulnerabilities on AWS VMs to maintain compliance with corporate and regulatory standards.</li>
+              <li>Maintained SAP Cloud Connector versions in line with SAP BTP requirements and security policies.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Graduate Engineer Trainee</div>
+                <div class="exp-company">HCL Technologies, Chennai</div>
+              </div>
+              <div class="exp-dates">Feb 2021 – May 2022</div>
+            </div>
+            <div class="exp-location">Azure · Terraform · Automation</div>
+            <ul class="exp-points">
+              <li>Developed Azure infrastructure using Terraform, including provisioning VMs and Kubernetes clusters.</li>
+              <li>Automated VM lifecycle (start/stop of unused instances) using PowerShell scripts to optimise cloud costs.</li>
+              <li>Ensured secure configuration of shell scripts executed through jump hosts and VPN via Azure DevOps pipelines.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <div class="exp-header">
+              <div>
+                <div class="exp-role">Intern</div>
+                <div class="exp-company">Criterion Networks, Bengaluru</div>
+              </div>
+              <div class="exp-dates">Jul 2019 – Aug 2020</div>
+            </div>
+            <div class="exp-location">Python · Selenium · Test Automation</div>
+            <ul class="exp-points">
+              <li>Worked in the testing team on Criterion Networks platform, ensuring reliability of test results.</li>
+              <li>Developed Python Selenium scripts to automate regression test cases and reduce manual effort.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Projects</span> / Selected Highlights</div>
+
+          <div class="project">
+            <div class="project-title">
+              <span>Migration to Cloud Foundry</span>
+              <span class="project-tag">SAP Labs</span>
+            </div>
+            <p>Led RPA-driven migration of automation workflows from Neo to Cloud Foundry, ensuring minimal downtime and
+              improved maintainability.</p>
+          </div>
+
+          <div class="project">
+            <div class="project-title">
+              <span>SSL Certificate Monitoring & Renewal</span>
+              <span class="project-tag">Python · SAP SPC</span>
+            </div>
+            <p>Built Python-based monitors for SSL certificates with automated ticketing in SPC, significantly reducing
+              expired-certificate incidents.</p>
+          </div>
+
+          <div class="project">
+            <div class="project-title">
+              <span>System Copy Using Kubernetes</span>
+              <span class="project-tag">Kubernetes</span>
+            </div>
+            <p>Utilized Kubernetes commands to copy system data from test to production and implemented pod monitoring for
+              better operational visibility.</p>
+          </div>
+
+          <div class="project">
+            <div class="project-title">
+              <span>Azure Infra with Terraform & PowerShell</span>
+              <span class="project-tag">HCL</span>
+            </div>
+            <p>Created Azure infrastructure via Terraform and automated VM power management with PowerShell, reducing cloud
+              spend while maintaining availability.</p>
+          </div>
+
+          <div class="project">
+            <div class="project-title">
+              <span>Test Automation Framework</span>
+              <span class="project-tag">Python Selenium</span>
+            </div>
+            <p>Developed Selenium-based automation scripts for Criterion Networks platform, improving test coverage and
+              reliability of releases.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <section>
+          <div class="section-title"><span>Skills</span> / Tech Stack</div>
+          <ul class="two-col-list">
+            <li>Python</li>
+            <li>Node.js</li>
+            <li>C / Embedded C</li>
+            <li>Java</li>
+            <li>Jenkins</li>
+            <li>Azure DevOps</li>
+            <li>Kubernetes</li>
+            <li>Git & GitHub</li>
+            <li>AWS (EC2, RDS, Lambda)</li>
+            <li>Microsoft Azure</li>
+            <li>Terraform</li>
+            <li>RPA (SAP Intelligent RPA)</li>
+          </ul>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Education</span> / Academic Background</div>
+          <div class="education-item">
+            <strong>Master of Technology in Embedded Systems</strong>
+            <div class="education-meta">VIT University, Vellore · 2018 – 2020</div>
+          </div>
+          <div class="education-item">
+            <strong>Bachelor of Technology in Electronics & Communication</strong>
+            <div class="education-meta">KSRM College of Engineering · 2014 – 2018</div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Certifications</span> / Credentials</div>
+          <div class="badge-row">
+            <span class="badge">Azure Administrator Associate (AZ-104)</span>
+            <span class="badge">Data Analyst Associate (DA-100)</span>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Languages</span> / Communication</div>
+          <div class="badge-row">
+            <span class="badge">English</span>
+            <span class="badge">Telugu</span>
+            <span class="badge">Tamil</span>
+            <span class="badge">Kannada</span>
+            <span class="badge">Hindi</span>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title"><span>Interests</span> / Beyond Work</div>
+          <p style="font-size:0.86rem; color:var(--text);">
+            Cloud-native technologies, infrastructure as code, observability, and building end-to-end automation for
+            development pipelines. Always exploring better ways to ship stable software faster.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      © <span id="year"></span> K C Koushik · Built with HTML & CSS
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
+
 </html>
