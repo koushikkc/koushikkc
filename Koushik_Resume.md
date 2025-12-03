@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="profile.jpg" width="180" alt="K C Koushik" />
+</p>
+
 <div>
 
 ::::: section
