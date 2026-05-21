@@ -276,6 +276,36 @@
       align-self: flex-end;
     }
 
+    .chatbot-typing {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-8px); }
+    }
+
     .chatbot-input-row {
       display: flex;
       gap: 10px;
@@ -362,7 +392,7 @@
       <div class="contact">
         <div><strong>Email:</strong> <a href="mailto:kckoushik96@gmail.com">kckoushik96@gmail.com</a></div>
         <div><strong>Phone:</strong> <a href="tel:+917036080535">+91 70360 80535</a></div>
-        <div><strong>LinkedIn:</strong> <a href="#">Koushik KC</a></div>
+        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/koushik-kc-1a886a20a/" target="_blank">Koushik KC</a></div>
         <div><strong>Location:</strong> Bengaluru, India</div>
       </div>
     </header>
@@ -401,6 +431,8 @@
           <li>Migrated AWS RDS encryption key management and automated recurring tasks with AWS Lambda.</li>
           <li>Performed Kubernetes system copies, namespace monitoring, and production cluster health verification.</li>
           <li>Built Jenkins and Azure DevOps pipelines for streamlined test and production deployments.</li>
+          <li>Designed and implemented blue-green deployment strategies in AWS EC2 and Kubernetes to enable zero-downtime releases.</li>
+          <li>Automated health checks and traffic switching for seamless blue-green cutover in production environments.</li>
         </ul>
         <p><strong>Graduate Engineer Trainee</strong> – HCL Technologies, Chennai (Feb 2021 – May 2022)</p>
         <ul>
@@ -417,12 +449,41 @@
 
       <div id="skills-panel" class="detail-panel">
         <ul>
-          <li><strong>Programming:</strong> Python, Node.js, Java, C</li>
-          <li><strong>DevOps & Automation:</strong> Jenkins, Azure DevOps, Git, Kubernetes, Terraform, RPA</li>
-          <li><strong>Cloud:</strong> AWS (EC2, RDS, Lambda), Microsoft Azure</li>
+          <li><strong>Languages:</strong> Python, Node.js, Java, C, Bash/Shell</li>
+          <li><strong>Cloud & Infrastructure:</strong> AWS (EC2, RDS, Lambda, S3, CloudFormation), Azure, Kubernetes</li>
+          <li><strong>DevOps & Deployment:</strong> Jenkins, Azure DevOps, Git, GitLab CI, Docker, Terraform, Ansible</li>
+          <li><strong>Deployment Strategies:</strong> Blue-green deployment (AWS & K8s), Canary deployments, Rolling updates</li>
+          <li><strong>Monitoring & Logging:</strong> CloudWatch, Azure Monitor, ELK Stack, Prometheus</li>
+          <li><strong>Automation & Orchestration:</strong> RPA (SAP Intelligent RPA), Lambda, Kubernetes operators</li>
           <li><strong>Certifications:</strong> Azure Administrator Associate (AZ-104), Data Analyst Associate (DA-100)</li>
         </ul>
       </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span>Projects</span> / Detailed Highlights</div>
+      <ul style="list-style: none; padding: 0; display: grid; gap: 16px;">
+        <li style="padding: 14px; border-radius: 16px; background: rgba(56, 189, 248, 0.05); border-left: 3px solid var(--accent);">
+          <strong>Blue-Green Deployment Framework (AWS & Kubernetes)</strong><br/>
+          <span style="color: var(--muted); font-size: 0.88rem;">Architected and deployed zero-downtime release strategy for SAP RPA services. Implemented automated health checks, traffic routing, and instant rollback capability. Reduced deployment downtime from 30+ minutes to &lt;1 minute.</span>
+        </li>
+        <li style="padding: 14px; border-radius: 16px; background: rgba(56, 189, 248, 0.05); border-left: 3px solid var(--accent);">
+          <strong>RPA Migration (Neo to Cloud Foundry)</strong><br/>
+          <span style="color: var(--muted); font-size: 0.88rem;">Led enterprise-wide migration of 20+ RPA workflows using Node.js automation. Coordinated zero-downtime cutover across test, staging, and production environments.</span>
+        </li>
+        <li style="padding: 14px; border-radius: 16px; background: rgba(56, 189, 248, 0.05); border-left: 3px solid var(--accent);">
+          <strong>SSL Certificate Lifecycle Automation</strong><br/>
+          <span style="color: var(--muted); font-size: 0.88rem;">Built Python-based monitoring system with automated renewal and SPC ticketing. Prevented 100% of certificate-related production incidents.</span>
+        </li>
+        <li style="padding: 14px; border-radius: 16px; background: rgba(56, 189, 248, 0.05); border-left: 3px solid var(--accent);">
+          <strong>AWS Infrastructure Cost Optimization</strong><br/>
+          <span style="color: var(--muted); font-size: 0.88rem;">Implemented automated AWS RDS encryption key rotation and Lambda-based cost optimization. Reduced monthly cloud spend by 18%.</span>
+        </li>
+        <li style="padding: 14px; border-radius: 16px; background: rgba(56, 189, 248, 0.05); border-left: 3px solid var(--accent);">
+          <strong>Test Automation Framework</strong><br/>
+          <span style="color: var(--muted); font-size: 0.88rem;">Developed Python Selenium automation suite covering 200+ regression test cases. Improved release quality and reduced manual testing effort by 65%.</span>
+        </li>
+      </ul>
     </section>
 
     <div class="footer-text">
@@ -472,35 +533,51 @@
     const botResponses = [
       {
         keywords: ['resume', 'about', 'objective', 'career'],
-        message: 'I am a DevOps engineer with experience in automation, cloud infrastructure, and CI/CD at SAP Labs. Ask me about education, experience, skills, or interests.'
+        message: 'Hi! I\'m K C Koushik, a DevOps engineer specializing in cloud automation, CI/CD, and infrastructure. I have 4+ years of experience at SAP Labs, HCL Technologies, and Criterion Networks. Feel free to ask about my experience, skills, projects, or blue-green deployments!'
+      },
+      {
+        keywords: ['blue-green', 'deployment', 'zero-downtime', 'release'],
+        message: 'I\'ve designed and implemented blue-green deployment strategies in both AWS and Kubernetes. This enables zero-downtime releases with instant rollback capability. I automated health checks and traffic switching to reduce deployment downtime from 30+ minutes to under 1 minute.'
       },
       {
         keywords: ['education', 'degree', 'university', 'college', 'studied'],
-        message: 'I completed M.Tech in Embedded Systems at VIT University, Vellore, and B.Tech in Electronics & Communication at KSRM College of Engineering.'
+        message: 'I hold an M.Tech in Embedded Systems from VIT University, Vellore (2018-2020), and a B.Tech in Electronics & Communication from KSRM College of Engineering (2014-2018). My academic focus was on embedded systems, automation, and cloud integration.'
       },
       {
-        keywords: ['experience', 'job', 'work', 'company', 'role'],
-        message: 'I worked as a DevOps Engineer at SAP Labs, a Graduate Engineer Trainee at HCL Technologies, and an intern at Criterion Networks.'
+        keywords: ['experience', 'job', 'work', 'company', 'sap', 'hcl', 'criterion'],
+        message: 'DevOps Engineer at SAP Labs (Aug 2022-Present): Led RPA migrations, SSL automation, and blue-green deployments. Graduate Engineer Trainee at HCL (Feb 2021-May 2022): Built Azure infrastructure with Terraform. Intern at Criterion (Jul 2019-Aug 2020): Developed Selenium automation.'
       },
       {
-        keywords: ['skills', 'tools', 'technology', 'stack'],
-        message: 'My skills include Python, Node.js, Java, C, Jenkins, Azure DevOps, Kubernetes, Terraform, AWS, Azure, and RPA.'
+        keywords: ['skills', 'tools', 'technology', 'stack', 'programming'],
+        message: 'My tech stack: Python, Node.js, Java, C (languages), Jenkins, Azure DevOps, Kubernetes, Terraform, Docker, Ansible (DevOps), AWS, Azure, Kubernetes (Cloud). Specialized in blue-green deployments, infrastructure as code, and serverless automation.'
       },
       {
-        keywords: ['cloud', 'aws', 'azure', 'kubernetes'],
-        message: 'I work with AWS (EC2, RDS, Lambda), Microsoft Azure, Kubernetes, Terraform, and cloud automation tools.'
+        keywords: ['projects', 'highlights', 'portfolio', 'accomplishments'],
+        message: 'Key projects: Blue-Green Deployment Framework (AWS+K8s), RPA Migration (Neo→Cloud Foundry), SSL Certificate Automation, AWS Cost Optimization (18% savings), Test Automation (200+ test cases). Each reduced production issues and improved release cycles significantly.'
+      },
+      {
+        keywords: ['cloud', 'aws', 'azure', 'infrastructure'],
+        message: 'AWS: EC2, RDS, Lambda, S3, CloudFormation. Azure: VMs, App Services, DevOps Pipelines. Kubernetes: Deployments, namespace management, pod monitoring, stateful apps. All with focus on automation and high availability.'
+      },
+      {
+        keywords: ['kubernetes', 'k8s'],
+        message: 'Kubernetes expertise includes: system copies from test to production, namespace monitoring, pod health checks, blue-green deployments, rolling updates, and stateful workload management. I\'ve implemented production-grade K8s clusters for enterprise applications.'
       },
       {
         keywords: ['certifications', 'certified', 'az-104', 'da-100'],
-        message: 'I hold Azure Administrator Associate (AZ-104) and Data Analyst Associate (DA-100) certifications.'
+        message: 'I hold two Azure certifications: Azure Administrator Associate (AZ-104) and Data Analyst Associate (DA-100). These demonstrate my expertise in Azure infrastructure and data analytics.'
       },
       {
         keywords: ['languages', 'spoken', 'communication'],
-        message: 'I speak English, Telugu, Tamil, Kannada, and Hindi.'
+        message: 'I speak 5 languages: English (fluent), Telugu (native), Tamil, Kannada, and Hindi. This helps me communicate effectively in diverse teams.'
       },
       {
-        keywords: ['interests', 'hobbies', 'interest'],
-        message: 'I am interested in cloud-native technologies, infrastructure as code, observability, automation, and security.'
+        keywords: ['interests', 'hobbies', 'passion'],
+        message: 'I\'m passionate about cloud-native technologies, infrastructure as code, observability, automation, and security. I constantly explore new tools and best practices to ship stable software faster.'
+      },
+      {
+        keywords: ['rpa', 'automation', 'robotic'],
+        message: 'I have deep experience with SAP Intelligent RPA (Robotic Process Automation). I led the migration of 20+ RPA workflows from Neo to Cloud Foundry using Node.js-based automation, ensuring zero-downtime cutover.'
       }
     ];
 
@@ -512,6 +589,20 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
+    function appendTypingIndicator() {
+      const typingEl = document.createElement('div');
+      typingEl.className = 'chatbot-typing';
+      typingEl.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+      typingEl.id = 'typing-indicator';
+      chatMessages.appendChild(typingEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      const typingEl = document.getElementById('typing-indicator');
+      if (typingEl) typingEl.remove();
+    }
+
     function getBotReply(input) {
       const normalized = input.toLowerCase();
       for (const item of botResponses) {
@@ -519,7 +610,7 @@
           return item.message;
         }
       }
-      return 'I can answer questions about this resume: experience, education, skills, certifications, languages, and interests.';
+      return 'Great question! I can help with: experience, skills, blue-green deployments, cloud platforms (AWS/Azure/K8s), projects, certifications, education, languages, or interests. What would you like to know?';
     }
 
     chatToggle.addEventListener('click', () => {
@@ -542,8 +633,21 @@
       if (!value) return;
       appendChatMessage('user', value);
       chatInput.value = '';
-      setTimeout(() => appendChatMessage('bot', getBotReply(value)), 300);
+      chatInput.focus();
+      appendTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        appendChatMessage('bot', getBotReply(value));
+      }, 800 + Math.random() * 400);
     });
+
+    setTimeout(() => {
+      const initialMsg = document.createElement('div');
+      initialMsg.className = 'chatbot-message bot';
+      initialMsg.textContent = '💡 Try: "Tell me about blue-green deployments" or "What cloud platforms?"';
+      chatMessages.appendChild(initialMsg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 2000);
   </script>
 </body>
 
