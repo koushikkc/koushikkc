@@ -539,7 +539,7 @@
     </div>
     <div class="header-contact">
       <a href="mailto:kckoushik96@gmail.com">📧 Email</a>
-      <a href="https://www.linkedin.com/in/koushik-kc-1a886a20a/" target="_blank">🔗 LinkedIn</a>
+        <a href="https://www.linkedin.com/in/koushikk-kc-1a886a20a/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
     </div>
   </header>
 
@@ -789,7 +789,8 @@
   </section>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Tab Navigation
     const navTabs = document.querySelectorAll('.nav-tab');
