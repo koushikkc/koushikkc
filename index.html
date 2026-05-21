@@ -68,15 +68,46 @@
 
     .header-contact {
       display: flex;
-      gap: 24px;
+      gap: 16px;
       align-items: center;
       font-size: 0.9rem;
     }
 
     .header-contact a {
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: white;
+      box-shadow: 0 4px 12px rgba(11, 61, 145, 0.12);
+    }
+
+    .header-contact a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(11, 61, 145, 0.16);
+    }
+
+    .header-contact a.linkedin {
+      background: linear-gradient(135deg, #0a66c2, #085ba8);
+    }
+
+    .header-contact a.gmail {
+      background: linear-gradient(135deg, #ea4335, #c5221f);
+    }
+
+    .header-contact a span.icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      font-size: 0.9rem;
     }
 
     /* Main Container */
@@ -538,9 +569,14 @@
       K C KOUSHIK
     </div>
     <div class="header-contact">
-      <a href="mailto:kckoushik96@gmail.com">📧 Email</a>
-        <a href="https://www.linkedin.com/in/koushikk-kc-1a886a20a/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
-    </div>
+      <a href="mailto:kckoushik96@gmail.com" class="gmail">
+        <span class="icon">✉</span>
+        <span>Gmail</span>
+      </a>
+      <a href="https://www.linkedin.com/in/koushikk-kc-1a886a20a/" target="_blank" rel="noopener noreferrer" class="linkedin">
+        <span class="icon">in</span>
+        <span>LinkedIn</span>
+      </a>
   </header>
 
   <!-- Main Container -->
