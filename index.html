@@ -25,35 +25,77 @@
       background: radial-gradient(circle at top, #1e293b 0, #020617 50%, #020617 100%);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
 
     .page {
-      min-height: 100vh;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 24px 18px 40px;
     }
 
-    @media (max-width: 640px) {
-      .page {
-        padding-inline: 14px;
-      }
+    header {
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .name {
+      font-size: clamp(2rem, 2.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--text);
+      font-size: 0.8rem;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .contact {
+      margin-top: 20px;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact a {
+      color: var(--text);
     }
 
     section {
-      margin-bottom: 20px;
       padding: 22px;
       border-radius: 24px;
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
       border: 1px solid var(--border);
+      margin-bottom: 20px;
     }
 
     .section-title {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 0.16em;
-      color: var(--muted);
       text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 14px;
     }
 
@@ -62,35 +104,28 @@
     }
 
     .quick-nav {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin-bottom: 20px;
     }
 
-    .button-column {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1 1 220px;
-    }
-
     .quick-button {
-      font-size: 0.95rem;
-      padding: 14px 18px;
+      width: 100%;
+      padding: 14px 16px;
       border-radius: 16px;
       border: 1px solid rgba(56, 189, 248, 0.4);
       background: rgba(15, 23, 42, 0.92);
       color: var(--text);
+      text-align: left;
       cursor: pointer;
       transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-      text-align: left;
-      width: 100%;
+      font-size: 0.95rem;
     }
 
     .quick-button:hover,
     .quick-button.active {
-      background: rgba(56, 189, 248, 0.16);
+      background: rgba(56, 189, 248, 0.2);
       border-color: var(--accent);
       transform: translateY(-1px);
     }
@@ -101,130 +136,157 @@
       overflow: hidden;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(-12px);
       padding-top: 0;
-      color: var(--text);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      transition: opacity 0.25s ease, max-height 0.25s ease, padding-top 0.25s ease, transform 0.25s ease;
+      transition: opacity 350ms cubic-bezier(.2,1.2,.3,1), transform 350ms cubic-bezier(.2,1.2,.3,1), max-height 350ms ease, padding-top 350ms ease;
     }
 
     .detail-panel.active {
-      max-height: 1000px;
-      opacity: 1;
       visibility: visible;
+      opacity: 1;
       transform: translateY(0);
-      padding-top: 10px;
+      padding-top: 14px;
+      max-height: 900px;
+    }
+
+    .detail-panel p,
+    .detail-panel ul {
+      margin-bottom: 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.75;
     }
 
     .detail-panel ul {
       list-style: none;
       padding-left: 0;
-      margin-top: 12px;
       display: grid;
       gap: 10px;
     }
 
     .detail-panel li {
       position: relative;
-      padding-left: 18px;
+      padding-left: 20px;
     }
 
     .detail-panel li::before {
       content: "•";
       position: absolute;
       left: 0;
+      top: 0.2em;
       color: var(--accent);
     }
 
-    footer {
-      margin-top: 20px;
+    .footer-text {
       text-align: center;
-      font-size: 0.82rem;
       color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 12px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .detail-panel {
+        transition: none;
+        transform: none;
+      }
+
+      .quick-button {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .quick-nav {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="page">
-    <main>
-      <section>
-        <div class="section-title"><span>Profile</span> / Quick Details</div>
-        <div class="quick-nav">
-          <div class="button-column">
-            <button class="quick-button active" data-panel="about-panel">About Me</button>
-            <button class="quick-button" data-panel="education-panel">Education</button>
-          </div>
-          <div class="button-column">
-            <button class="quick-button" data-panel="experience-panel">Professional Experience</button>
-            <button class="quick-button" data-panel="skills-panel">Skills & Certification</button>
-          </div>
-        </div>
+    <header>
+      <div class="name">K C Koushik</div>
+      <div class="role">DevOps Engineer & Automation Specialist</div>
+      <div class="tags">
+        <span class="tag">SAP Labs – DevOps</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">AWS & Azure</span>
+        <span class="tag">CI/CD – Jenkins & Azure DevOps</span>
+      </div>
+      <div class="contact">
+        <div><strong>Email:</strong> <a href="mailto:kckoushik96@gmail.com">kckoushik96@gmail.com</a></div>
+        <div><strong>Phone:</strong> <a href="tel:+917036080535">+91 70360 80535</a></div>
+        <div><strong>LinkedIn:</strong> <a href="#">Koushik KC</a></div>
+        <div><strong>Location:</strong> Bengaluru, India</div>
+      </div>
+    </header>
 
-        <div id="about-panel" class="detail-panel active">
-          <p>I am a DevOps engineer with hands-on experience in automation, cloud infrastructure, and CI/CD. I build scalable deployment solutions while improving system reliability and accelerating delivery across SAP, AWS, and Azure environments.</p>
-          <p><strong>Career Objective:</strong> Contribute to a strong engineering team by designing end-to-end DevOps workflows that reduce manual effort, increase operational resilience, and support secure, fast delivery.</p>
-          <ul>
-            <li><strong>Languages:</strong> English, Telugu, Tamil, Kannada, Hindi</li>
-            <li><strong>Interests:</strong> Cloud-native technologies, infrastructure as code, observability, automation, and security.</li>
-          </ul>
-        </div>
+    <section>
+      <div class="section-title"><span>Profile</span> / Quick Details</div>
+      <div class="quick-nav">
+        <button class="quick-button active" data-panel="about-panel">About Me</button>
+        <button class="quick-button" data-panel="education-panel">Education</button>
+        <button class="quick-button" data-panel="experience-panel">Professional Experience</button>
+        <button class="quick-button" data-panel="skills-panel">Skills & Certification</button>
+      </div>
 
-        <div id="education-panel" class="detail-panel">
-          <ul>
-            <li><strong>M.Tech in Embedded Systems</strong> – VIT University, Vellore (2018–2020)</li>
-            <li><strong>B.Tech in Electronics & Communication</strong> – KSRM College of Engineering (2014–2018)</li>
-          </ul>
-          <p><strong>Academic focus:</strong> Embedded systems, automation, cloud integration, and secure infrastructure design.</p>
-        </div>
+      <div id="about-panel" class="detail-panel active">
+        <p>I am a DevOps engineer with hands-on experience in automation, cloud infrastructure, and CI/CD. I build scalable deployment solutions while improving system reliability and accelerating delivery across SAP, AWS, and Azure environments.</p>
+        <p><strong>Career Objective:</strong> Contribute to a strong engineering team by designing end-to-end DevOps workflows that reduce manual effort, increase operational resilience, and support secure, fast delivery.</p>
+        <ul>
+          <li><strong>Languages:</strong> English, Telugu, Tamil, Kannada, Hindi</li>
+          <li><strong>Interests:</strong> Cloud-native technologies, infrastructure as code, observability, automation, and security.</li>
+        </ul>
+      </div>
 
-        <div id="experience-panel" class="detail-panel">
-          <div>
-            <strong>DevOps Engineer</strong> – SAP Labs, Bengaluru (Aug 2022 – Present)
-            <ul>
-              <li>Led SAP Intelligent RPA migration from Neo to Cloud Foundry and automated deployments using Node.js workflows.</li>
-              <li>Implemented SSL certificate lifecycle monitoring with Python and automated ticket creation in SPC.</li>
-              <li>Migrated AWS RDS encryption key management and automated recurring tasks with AWS Lambda.</li>
-              <li>Performed Kubernetes system copies, namespace monitoring, and production cluster health verification.</li>
-              <li>Built Jenkins and Azure DevOps pipelines for streamlined test and production deployments.</li>
-            </ul>
-          </div>
-          <div style="margin-top: 16px;">
-            <strong>Graduate Engineer Trainee</strong> – HCL Technologies, Chennai (Feb 2021 – May 2022)
-            <ul>
-              <li>Provisioned Azure infrastructure with Terraform, including VMs and Kubernetes clusters.</li>
-              <li>Automated VM lifecycle start/stop to reduce cloud costs using PowerShell.</li>
-              <li>Secured shell script execution across VPN and jump hosts in Azure DevOps pipelines.</li>
-            </ul>
-          </div>
-          <div style="margin-top: 16px;">
-            <strong>Intern</strong> – Criterion Networks, Bengaluru (Jul 2019 – Aug 2020)
-            <ul>
-              <li>Developed Python Selenium automation scripts to reduce manual regression testing effort.</li>
-              <li>Improved release quality by validating platform workflows and catching issues early.</li>
-            </ul>
-          </div>
-        </div>
+      <div id="education-panel" class="detail-panel">
+        <ul>
+          <li><strong>M.Tech in Embedded Systems</strong> – VIT University, Vellore (2018–2020)</li>
+          <li><strong>B.Tech in Electronics & Communication</strong> – KSRM College of Engineering (2014–2018)</li>
+        </ul>
+        <p><strong>Academic focus:</strong> Embedded systems, automation, cloud integration, and secure infrastructure design.</p>
+      </div>
 
-        <div id="skills-panel" class="detail-panel">
-          <ul>
-            <li><strong>Programming:</strong> Python, Node.js, Java, C</li>
-            <li><strong>DevOps & Automation:</strong> Jenkins, Azure DevOps, Git, Kubernetes, Terraform, RPA</li>
-            <li><strong>Cloud:</strong> AWS (EC2, RDS, Lambda), Microsoft Azure</li>
-            <li><strong>Certifications:</strong> Azure Administrator Associate (AZ-104), Data Analyst Associate (DA-100)</li>
-          </ul>
-        </div>
-      </section>
-    </main>
+      <div id="experience-panel" class="detail-panel">
+        <p><strong>DevOps Engineer</strong> – SAP Labs, Bengaluru (Aug 2022 – Present)</p>
+        <ul>
+          <li>Led SAP Intelligent RPA migration from Neo to Cloud Foundry and automated deployments using Node.js workflows.</li>
+          <li>Implemented SSL certificate lifecycle monitoring with Python and automated ticket creation in SPC.</li>
+          <li>Migrated AWS RDS encryption key management and automated recurring tasks with AWS Lambda.</li>
+          <li>Performed Kubernetes system copies, namespace monitoring, and production cluster health verification.</li>
+          <li>Built Jenkins and Azure DevOps pipelines for streamlined test and production deployments.</li>
+        </ul>
+        <p><strong>Graduate Engineer Trainee</strong> – HCL Technologies, Chennai (Feb 2021 – May 2022)</p>
+        <ul>
+          <li>Provisioned Azure infrastructure with Terraform, including VMs and Kubernetes clusters.</li>
+          <li>Automated VM lifecycle start/stop to reduce cloud costs using PowerShell.</li>
+          <li>Secured shell script execution across VPN and jump hosts in Azure DevOps pipelines.</li>
+        </ul>
+        <p><strong>Intern</strong> – Criterion Networks, Bengaluru (Jul 2019 – Aug 2020)</p>
+        <ul>
+          <li>Developed Python Selenium automation scripts to reduce manual regression testing effort.</li>
+          <li>Improved release quality by validating platform workflows and catching issues early.</li>
+        </ul>
+      </div>
 
-    <footer>
+      <div id="skills-panel" class="detail-panel">
+        <ul>
+          <li><strong>Programming:</strong> Python, Node.js, Java, C</li>
+          <li><strong>DevOps & Automation:</strong> Jenkins, Azure DevOps, Git, Kubernetes, Terraform, RPA</li>
+          <li><strong>Cloud:</strong> AWS (EC2, RDS, Lambda), Microsoft Azure</li>
+          <li><strong>Certifications:</strong> Azure Administrator Associate (AZ-104), Data Analyst Associate (DA-100)</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer-text">
       © <span id="year"></span> K C Koushik · Built with HTML & CSS
-    </footer>
+    </div>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     const buttons = document.querySelectorAll('.quick-button');
     const panels = document.querySelectorAll('.detail-panel');
@@ -232,7 +294,6 @@
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         const targetId = button.dataset.panel;
-
         buttons.forEach(btn => btn.classList.toggle('active', btn === button));
         panels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
       });
