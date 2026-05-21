@@ -194,6 +194,73 @@
       color: var(--accent);
     }
 
+    .quick-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .button-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1 1 220px;
+    }
+
+    .quick-button {
+      font-size: 0.95rem;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      text-align: left;
+      width: 100%;
+    }
+
+    .quick-button:hover,
+    .quick-button.active {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .detail-panel {
+      display: none;
+      padding: 16px 0 0;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .detail-panel.active {
+      display: block;
+    }
+
+    .detail-panel ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .detail-panel li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .detail-panel li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
     .objective {
       font-size: 0.95rem;
       color: var(--text);
@@ -403,6 +470,44 @@
       <!-- LEFT COLUMN -->
       <div>
         <section>
+          <div class="section-title"><span>Profile</span> / Quick Details</div>
+          <div class="quick-nav">
+            <div class="button-column">
+              <button class="quick-button active" data-panel="about-panel">About Me</button>
+              <button class="quick-button" data-panel="education-panel">Education</button>
+            </div>
+            <div class="button-column">
+              <button class="quick-button" data-panel="experience-panel">Professional Experience</button>
+              <button class="quick-button" data-panel="skills-panel">Skills & Certification</button>
+            </div>
+          </div>
+          <div id="about-panel" class="detail-panel active">
+            <p>I am a DevOps engineer experienced in automation, cloud infrastructure, and CI/CD. I build scalable deployment
+              solutions and streamline operations across SAP, AWS, and Azure environments while keeping systems reliable and secure.</p>
+          </div>
+          <div id="education-panel" class="detail-panel">
+            <ul>
+              <li><strong>M.Tech in Embedded Systems</strong> – VIT University, Vellore (2018–2020)</li>
+              <li><strong>B.Tech in Electronics & Communication</strong> – KSRM College of Engineering (2014–2018)</li>
+            </ul>
+          </div>
+          <div id="experience-panel" class="detail-panel">
+            <ul>
+              <li>DevOps Engineer at SAP Labs, Bengaluru — led RPA migration, CI/CD pipeline automation, Kubernetes operations, and SSL certificate lifecycle management.</li>
+              <li>Graduate Engineer Trainee at HCL Technologies — built Azure infrastructure with Terraform and automated cloud cost controls.</li>
+              <li>Intern at Criterion Networks — delivered Python Selenium test automation for reliable release validation.</li>
+            </ul>
+          </div>
+          <div id="skills-panel" class="detail-panel">
+            <ul>
+              <li>Cloud Platforms: AWS, Azure</li>
+              <li>Tools: Jenkins, Azure DevOps, Kubernetes, Terraform</li>
+              <li>Languages: Python, Node.js, Java, C</li>
+              <li>Certifications: Azure Administrator Associate (AZ-104), Data Analyst Associate (DA-100)</li>
+            </ul>
+          </div>
+        </section>
+        <section>
           <div class="section-title"><span>Overview</span> / Career Objective</div>
           <p class="objective">
             DevOps Engineer with hands-on experience in automation, cloud infrastructure, and CI/CD. Proven track record in
@@ -597,6 +702,18 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const buttons = document.querySelectorAll('.quick-button');
+    const panels = document.querySelectorAll('.detail-panel');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.dataset.panel;
+
+        buttons.forEach(btn => btn.classList.toggle('active', btn === button));
+        panels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
+      });
+    });
   </script>
 </body>
 
