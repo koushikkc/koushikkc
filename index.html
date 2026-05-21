@@ -110,6 +110,61 @@
       font-size: 0.9rem;
     }
 
+    .footer-widgets {
+      margin-top: 48px;
+      padding: 22px 24px;
+      background: rgba(11, 61, 145, 0.06);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-widgets p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .footer-widgets a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: white;
+      box-shadow: 0 4px 16px rgba(11, 61, 145, 0.12);
+    }
+
+    .footer-widgets a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(11, 61, 145, 0.16);
+    }
+
+    .footer-widgets a.linkedin {
+      background: linear-gradient(135deg, #0a66c2, #085ba8);
+    }
+
+    .footer-widgets a.gmail {
+      background: linear-gradient(135deg, #ea4335, #c5221f);
+    }
+
+    .footer-widgets a span.icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      font-size: 0.9rem;
+    }
+
     /* Main Container */
     .container {
       max-width: 1200px;
@@ -796,6 +851,19 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer Widgets -->
+    <div class="footer-widgets">
+      <p>Contact me directly:</p>
+      <a href="mailto:kckoushik96@gmail.com" class="gmail">
+        <span class="icon">✉</span>
+        <span>Gmail</span>
+      </a>
+      <a href="https://www.linkedin.com/in/koushikk-kc-1a886a20a/" target="_blank" rel="noopener noreferrer" class="linkedin">
+        <span class="icon">in</span>
+        <span>LinkedIn</span>
+      </a>
+    </div>
   </div>
 
   <!-- Chatbot -->
