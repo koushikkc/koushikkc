@@ -571,6 +571,35 @@
       color: var(--primary);
     }
 
+    .widget-link {
+      font-size: 0.9rem !important;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .widget-link.linkedin {
+      background: linear-gradient(135deg, #0a66c2, #085ba8) !important;
+      color: white !important;
+    }
+
+    .widget-link.linkedin:hover {
+      background: #0a66c2 !important;
+      color: white !important;
+      transform: scale(1.1);
+    }
+
+    .widget-link.gmail {
+      background: linear-gradient(135deg, #ea4335, #c5221f) !important;
+      color: white !important;
+      font-size: 1.2rem !important;
+    }
+
+    .widget-link.gmail:hover {
+      background: #ea4335 !important;
+      color: white !important;
+      transform: scale(1.1);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .hero h1 { font-size: 1.8rem; }
@@ -591,7 +620,6 @@
     </div>
     <div class="header-contact">
       <a href="mailto:kckoushik96@gmail.com">📧 Email</a>
-      <a href="tel:+917036080535">📱 +91 70360 80535</a>
       <a href="https://www.linkedin.com/in/koushik-kc-1a886a20a/" target="_blank">🔗 LinkedIn</a>
     </div>
   </header>
@@ -813,9 +841,8 @@
   <footer>
     <div class="footer-content">
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/koushik-kc-1a886a20a/" target="_blank">LinkedIn</a>
-        <a href="mailto:kckoushik96@gmail.com">Email</a>
-        <a href="tel:+917036080535">Phone</a>
+        <a href="https://www.linkedin.com/in/koushik-kc-1a886a20a/" target="_blank" title="LinkedIn Profile" class="widget-link linkedin">in</a>
+        <a href="mailto:kckoushik96@gmail.com" title="Send Email" class="widget-link gmail">✉</a>
       </div>
       <div class="footer-links">
         <a href="#about">About</a>
