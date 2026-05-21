@@ -177,6 +177,151 @@
       color: var(--accent);
     }
 
+    .chatbot-toggle {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+    }
+
+    .chatbot-toggle button {
+      border: none;
+      border-radius: 28px;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #08101c;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 18px 40px rgba(2, 8, 20, 0.3);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .chatbot-toggle button:hover {
+      transform: translateY(-1px);
+    }
+
+    .chatbot-panel {
+      position: fixed;
+      right: 22px;
+      bottom: 82px;
+      width: min(360px, calc(100vw - 32px));
+      max-height: 520px;
+      border-radius: 24px;
+      background: rgba(8, 15, 28, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition: opacity 240ms ease, transform 240ms ease, visibility 240ms ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 29;
+    }
+
+    .chatbot-panel.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .chatbot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-weight: 600;
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .chatbot-header button {
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .chatbot-messages {
+      padding: 14px 16px;
+      display: grid;
+      gap: 10px;
+      overflow-y: auto;
+      flex: 1;
+      min-height: 140px;
+    }
+
+    .chatbot-message {
+      max-width: 100%;
+      padding: 12px 14px;
+      border-radius: 18px;
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .chatbot-message.bot {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--text);
+      align-self: flex-start;
+    }
+
+    .chatbot-message.user {
+      background: rgba(248, 250, 252, 0.08);
+      color: var(--text);
+      align-self: flex-end;
+    }
+
+    .chatbot-input-row {
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .chatbot-input-row input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      outline: none;
+    }
+
+    .chatbot-input-row button {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 16px;
+      background: var(--accent);
+      color: #08101c;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .chatbot-input-row button:hover {
+      opacity: 0.94;
+    }
+
+    .chatbot-messages::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
     .footer-text {
       text-align: center;
       color: var(--muted);
@@ -285,6 +430,24 @@
     </div>
   </div>
 
+  <div class="chatbot-toggle">
+    <button id="chat-toggle" type="button">Chat with K</button>
+  </div>
+
+  <section class="chatbot-panel" id="chat-panel" aria-hidden="true">
+    <div class="chatbot-header">
+      <span>Resume Bot</span>
+      <button id="chat-close" type="button" aria-label="Close chat">×</button>
+    </div>
+    <div class="chatbot-messages" id="chat-messages">
+      <div class="chatbot-message bot">Hi! Ask me about my experience, skills, education, certifications, languages, or interests.</div>
+    </div>
+    <form class="chatbot-input-row" id="chat-form">
+      <input id="chat-input" type="text" placeholder="Ask about the resume..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -297,6 +460,89 @@
         buttons.forEach(btn => btn.classList.toggle('active', btn === button));
         panels.forEach(panel => panel.classList.toggle('active', panel.id === targetId));
       });
+    });
+
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatPanel = document.getElementById('chat-panel');
+    const chatClose = document.getElementById('chat-close');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    const botResponses = [
+      {
+        keywords: ['resume', 'about', 'objective', 'career'],
+        message: 'I am a DevOps engineer with experience in automation, cloud infrastructure, and CI/CD at SAP Labs. Ask me about education, experience, skills, or interests.'
+      },
+      {
+        keywords: ['education', 'degree', 'university', 'college', 'studied'],
+        message: 'I completed M.Tech in Embedded Systems at VIT University, Vellore, and B.Tech in Electronics & Communication at KSRM College of Engineering.'
+      },
+      {
+        keywords: ['experience', 'job', 'work', 'company', 'role'],
+        message: 'I worked as a DevOps Engineer at SAP Labs, a Graduate Engineer Trainee at HCL Technologies, and an intern at Criterion Networks.'
+      },
+      {
+        keywords: ['skills', 'tools', 'technology', 'stack'],
+        message: 'My skills include Python, Node.js, Java, C, Jenkins, Azure DevOps, Kubernetes, Terraform, AWS, Azure, and RPA.'
+      },
+      {
+        keywords: ['cloud', 'aws', 'azure', 'kubernetes'],
+        message: 'I work with AWS (EC2, RDS, Lambda), Microsoft Azure, Kubernetes, Terraform, and cloud automation tools.'
+      },
+      {
+        keywords: ['certifications', 'certified', 'az-104', 'da-100'],
+        message: 'I hold Azure Administrator Associate (AZ-104) and Data Analyst Associate (DA-100) certifications.'
+      },
+      {
+        keywords: ['languages', 'spoken', 'communication'],
+        message: 'I speak English, Telugu, Tamil, Kannada, and Hindi.'
+      },
+      {
+        keywords: ['interests', 'hobbies', 'interest'],
+        message: 'I am interested in cloud-native technologies, infrastructure as code, observability, automation, and security.'
+      }
+    ];
+
+    function appendChatMessage(role, text) {
+      const messageEl = document.createElement('div');
+      messageEl.className = `chatbot-message ${role}`;
+      messageEl.textContent = text;
+      chatMessages.appendChild(messageEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getBotReply(input) {
+      const normalized = input.toLowerCase();
+      for (const item of botResponses) {
+        if (item.keywords.some(keyword => normalized.includes(keyword))) {
+          return item.message;
+        }
+      }
+      return 'I can answer questions about this resume: experience, education, skills, certifications, languages, and interests.';
+    }
+
+    chatToggle.addEventListener('click', () => {
+      chatPanel.classList.toggle('open');
+      const open = chatPanel.classList.contains('open');
+      chatPanel.setAttribute('aria-hidden', String(!open));
+      if (open) {
+        chatInput.focus();
+      }
+    });
+
+    chatClose.addEventListener('click', () => {
+      chatPanel.classList.remove('open');
+      chatPanel.setAttribute('aria-hidden', 'true');
+    });
+
+    chatForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const value = chatInput.value.trim();
+      if (!value) return;
+      appendChatMessage('user', value);
+      chatInput.value = '';
+      setTimeout(() => appendChatMessage('bot', getBotReply(value)), 300);
     });
   </script>
 </body>
